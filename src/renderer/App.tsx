@@ -72,7 +72,6 @@ export default function App() {
   }, [data.spiderScript, webview, data.spiderInterval]);
 
   const start = async () => {
-    (webview as any).openDevTools();
     setIsWorking(true);
     refreshInterval.current = setInterval(() => {
       (webview as any).executeJavaScript(`window.location.reload()`);
