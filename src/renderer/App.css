@@ -1,0 +1,27 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+html, body {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.webview {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 1024px;
+}
+
+#root {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-left: 2px solid black;
+  width: calc(100vw - 1024px);
+  height: 100vh;
+  box-sizing: border-box;
+}
