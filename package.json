@@ -171,8 +171,8 @@
     "webpack-merge": "^5.8.0"
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.erb.ElectronReact",
+    "productName": "Spider",
+    "appId": "tech.jiahao.spier",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [
