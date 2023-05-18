@@ -33,4 +33,5 @@ jobs:
 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "release/*.zip,release/*.exe"
+          artifacts: "release/build/*.zip,release/build/*.exe"
+          allowUpdates: true
