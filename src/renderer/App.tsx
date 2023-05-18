@@ -34,7 +34,7 @@ export default function App() {
   const classes = useStyles();
   const [data, setData] = React.useState<Data>(cachedData);
   const [isWorking, setIsWorking] = React.useState(false);
-  const webview = document.getElementById('webview');
+  const webview = React.useMemo(() => document.getElementById('webview'), []);
 
   const refreshInterval = React.useRef<ReturnType<typeof setInterval>>();
   const executeInteval = React.useRef<ReturnType<typeof setInterval>>();
@@ -69,10 +69,11 @@ export default function App() {
           console.log('execute error', e);
         });
     }, parseInt(data.spiderInterval ?? '10', 10) * 1000);
-  }, [data.spiderScript, webview, data.spiderInterval]);
+  }, [data.spiderScript, data.spiderInterval, webview]);
 
   const start = async () => {
     setIsWorking(true);
+    refreshInterval.current && clearInterval(refreshInterval.current);
     refreshInterval.current = setInterval(() => {
       (webview as any).executeJavaScript(`window.location.reload()`);
     }, parseInt(data.refreshScript ?? '10', 10) * 1000);
@@ -81,9 +82,6 @@ export default function App() {
   };
 
   const stop = async () => {
-    if (!isWorking) {
-      return;
-    }
     setIsWorking(false);
     refreshInterval.current && clearInterval(refreshInterval.current);
     executeInteval.current && clearInterval(executeInteval.current);
