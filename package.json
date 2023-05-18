@@ -63,12 +63,12 @@
       "\\.(ts|tsx|js|jsx)$": "ts-jest"
     }
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@fluentui/react-components": "^9.20.0",
-    "copy-webpack-plugin": "^11.0.0",
+    "@fluentui/react-components": "^9.20.0"
+  },
+  "devDependencies": {
     "@electron/notarize": "^1.2.3",
     "@electron/rebuild": "^3.2.10",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
