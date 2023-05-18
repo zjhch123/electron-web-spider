@@ -10,23 +10,12 @@
  */
 import path from 'path';
 import { app, BrowserWindow, shell, ipcMain, Notification } from 'electron';
-import { autoUpdater } from 'electron-updater';
-import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
-
-class AppUpdater {
-  constructor() {
-    log.transports.file.level = 'info';
-    autoUpdater.logger = log;
-    autoUpdater.checkForUpdatesAndNotify();
-  }
-}
 
 let mainWindow: BrowserWindow | null = null;
 
 ipcMain.on('ipc-example', async (event, args) => {
-  console.log(args);
   new Notification({
     title: '快快快',
     body: args[0],
@@ -95,10 +84,6 @@ const createWindow = async () => {
     shell.openExternal(edata.url);
     return { action: 'deny' };
   });
-
-  // Remove this if your app does not use auto updates
-  // eslint-disable-next-line
-  new AppUpdater();
 };
 
 /**
